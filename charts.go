@@ -324,16 +324,16 @@ func Render(opt ChartOption, opts ...OptionFunc) (*Painter, error) {
 	funnelSeriesList := seriesList.Filter(ChartTypeFunnel)
 
 	if len(horizontalBarSeriesList) != 0 && len(horizontalBarSeriesList) != seriesCount {
-		return nil, errors.New("Horizontal bar can not mix other charts")
+		return nil, errors.New("horizontal bar can not mix other charts")
 	}
 	if len(pieSeriesList) != 0 && len(pieSeriesList) != seriesCount {
-		return nil, errors.New("Pie can not mix other charts")
+		return nil, errors.New("pie can not mix other charts")
 	}
 	if len(radarSeriesList) != 0 && len(radarSeriesList) != seriesCount {
-		return nil, errors.New("Radar can not mix other charts")
+		return nil, errors.New("radar can not mix other charts")
 	}
 	if len(funnelSeriesList) != 0 && len(funnelSeriesList) != seriesCount {
-		return nil, errors.New("Funnel can not mix other charts")
+		return nil, errors.New("funnel can not mix other charts")
 	}
 
 	axisReversed := len(horizontalBarSeriesList) != 0

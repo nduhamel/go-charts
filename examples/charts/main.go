@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -137,7 +138,7 @@ func handler(w http.ResponseWriter, req *http.Request, chartOptions []charts.Cha
 
 	data := bytes.ReplaceAll([]byte(html), []byte("{{body}}"), bytes.Join(bytesList, []byte("")))
 	w.Header().Set("Content-Type", "text/html")
-	w.Write(data)
+	_, _ = w.Write(data)
 }
 
 func indexHandler(w http.ResponseWriter, req *http.Request) {
@@ -1970,5 +1971,5 @@ func main() {
 	http.HandleFunc("/", indexHandler)
 	http.HandleFunc("/echarts", echartsHandler)
 	fmt.Println("http://127.0.0.1:3012/")
-	http.ListenAndServe(":3012", nil)
+	log.Fatal(http.ListenAndServe(":3012", nil))
 }

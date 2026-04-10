@@ -130,10 +130,7 @@ func (a *axisPainter) Render() (Box, error) {
 	dataCount := len(data)
 	tickCount := dataCount
 
-	boundaryGap := true
-	if isFalse(opt.BoundaryGap) {
-		boundaryGap = false
-	}
+	boundaryGap := !isFalse(opt.BoundaryGap)
 	isVertical := opt.Position == PositionLeft ||
 		opt.Position == PositionRight
 

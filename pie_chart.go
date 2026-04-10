@@ -170,7 +170,7 @@ func (p *pieChart) render(result *defaultRenderResult, seriesList SeriesList) (B
 		total += value
 	}
 	if total <= 0 {
-		return BoxZero, errors.New("The sum value of pie chart should gt 0")
+		return BoxZero, errors.New("the sum value of pie chart should gt 0")
 	}
 	seriesPainter := result.seriesPainter
 	cx := seriesPainter.Width() >> 1

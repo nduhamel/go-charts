@@ -410,7 +410,7 @@ func main() {
 
 	// grid
 	top += 50
-	charts.NewGridPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewGridPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -424,7 +424,7 @@ func main() {
 
 	// legend
 	top += 100
-	charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -443,7 +443,7 @@ func main() {
 
 	// legend
 	top += 30
-	charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -464,7 +464,7 @@ func main() {
 
 	// legend
 	top += 30
-	charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewLegendPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -484,7 +484,7 @@ func main() {
 
 	// axis bottom
 	top += 100
-	charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -506,7 +506,7 @@ func main() {
 
 	// axis top
 	top += 50
-	charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   1,
 		Right:  p.Width() - 1,
@@ -530,7 +530,7 @@ func main() {
 
 	// axis left
 	top += 50
-	charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   10,
 		Right:  60,
@@ -551,7 +551,7 @@ func main() {
 		FontColor:   drawing.ColorBlack,
 	}).Render()
 	// axis right
-	charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   100,
 		Right:  150,
@@ -573,7 +573,7 @@ func main() {
 	}).Render()
 
 	// axis left no tick
-	charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
+	_, _ = charts.NewAxisPainter(p.Child(charts.PainterBoxOption(charts.Box{
 		Top:    top,
 		Left:   150,
 		Right:  300,

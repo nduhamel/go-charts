@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path/filepath"
 
@@ -26,7 +25,7 @@ func writeFile(buf []byte) error {
 func main() {
 	// 字体文件需要自行下载
 	// https://github.com/googlefonts/noto-cjk
-	buf, err := ioutil.ReadFile("./NotoSansSC.ttf")
+	buf, err := os.ReadFile("./NotoSansSC.ttf")
 	if err != nil {
 		panic(err)
 	}

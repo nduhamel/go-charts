@@ -77,10 +77,7 @@ type LineChartOption struct {
 func (l *lineChart) render(result *defaultRenderResult, seriesList SeriesList) (Box, error) {
 	p := l.p
 	opt := l.opt
-	boundaryGap := true
-	if isFalse(opt.XAxis.BoundaryGap) {
-		boundaryGap = false
-	}
+	boundaryGap := !isFalse(opt.XAxis.BoundaryGap)
 
 	seriesPainter := result.seriesPainter
 
