@@ -37,6 +37,8 @@ type axisRange struct {
 	boundary    bool
 }
 
+// AxisRangeOption describes the inputs accepted by NewRange when computing
+// the value range and tick labels of an axis.
 type AxisRangeOption struct {
 	Painter *Painter
 	// The min value of axis
@@ -51,7 +53,8 @@ type AxisRangeOption struct {
 	DivideCount int
 }
 
-// NewRange returns a axis range
+// NewRange returns an axis range that covers the min/max values described
+// by opt, rounded so that the resulting tick labels are human friendly.
 func NewRange(opt AxisRangeOption) axisRange {
 	max := opt.Max
 	min := opt.Min

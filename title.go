@@ -29,6 +29,7 @@ import (
 	"github.com/golang/freetype/truetype"
 )
 
+// TitleOption configures the title rendered at the top of a chart.
 type TitleOption struct {
 	// The theme of chart
 	Theme ColorPalette

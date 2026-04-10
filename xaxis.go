@@ -26,6 +26,7 @@ import (
 	"github.com/golang/freetype/truetype"
 )
 
+// XAxisOption configures the rendering of an X axis.
 type XAxisOption struct {
 	// The font of x axis
 	Font *truetype.Font
@@ -70,6 +71,8 @@ func NewXAxisOption(data []string, boundaryGap ...*bool) XAxisOption {
 	return opt
 }
 
+// ToAxisOption converts an XAxisOption into the generic AxisOption shared
+// with the Y axis renderer.
 func (opt *XAxisOption) ToAxisOption() AxisOption {
 	position := PositionBottom
 	if opt.Position == PositionTop {

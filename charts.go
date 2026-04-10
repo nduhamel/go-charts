@@ -20,6 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// Package charts provides a simple API to render line, bar, horizontal bar,
+// pie, radar, funnel and table charts. It supports SVG and PNG output and
+// ships with several built-in themes (light, dark, grafana and ant).
+//
+// The package also accepts an Apache ECharts compatible option so that
+// front-end developers can reuse familiar configuration to generate charts
+// on the server side.
 package charts
 
 import (
@@ -64,6 +71,8 @@ func GetNullValue() float64 {
 	return nullValue
 }
 
+// Renderer is implemented by chart components that can be drawn on a Painter.
+// Render draws the component and returns the bounding Box that it occupied.
 type Renderer interface {
 	Render() (Box, error)
 }
@@ -280,6 +289,10 @@ func doRender(renderers ...Renderer) error {
 	return nil
 }
 
+// Render draws the chart described by opt and returns the Painter holding the
+// result. Any number of OptionFunc may be passed to tweak opt before the chart
+// is built. The returned Painter exposes the encoded bytes of the chart via
+// its Bytes method.
 func Render(opt ChartOption, opts ...OptionFunc) (*Painter, error) {
 	for _, fn := range opts {
 		fn(&opt)

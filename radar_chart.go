@@ -36,6 +36,8 @@ type radarChart struct {
 	opt *RadarChartOption
 }
 
+// RadarIndicator describes a single axis of a radar chart along with the
+// minimum and maximum values used to scale the corresponding data point.
 type RadarIndicator struct {
 	// Indicator's name
 	Name string
@@ -45,6 +47,8 @@ type RadarIndicator struct {
 	Min float64
 }
 
+// RadarChartOption configures a stand-alone radar chart rendered through
+// NewRadarChart.
 type RadarChartOption struct {
 	// The theme
 	Theme ColorPalette

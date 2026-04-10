@@ -27,26 +27,53 @@ import (
 	"github.com/wcharczuk/go-chart/v2/drawing"
 )
 
+// ThemeDark is the identifier of the built-in dark theme.
 const ThemeDark = "dark"
+
+// ThemeLight is the identifier of the built-in light theme and the default
+// theme used when no other theme is selected.
 const ThemeLight = "light"
+
+// ThemeGrafana is the identifier of the built-in Grafana-inspired theme.
 const ThemeGrafana = "grafana"
+
+// ThemeAnt is the identifier of the built-in Ant Design-inspired theme.
 const ThemeAnt = "ant"
 
+// ColorPalette describes the colors, font and font size used to render a
+// chart. Implementations are typically created through NewTheme and can be
+// mutated between renderings via the setter methods.
 type ColorPalette interface {
+	// IsDark reports whether the palette is a dark theme.
 	IsDark() bool
+	// GetAxisStrokeColor returns the color used to draw axis lines.
 	GetAxisStrokeColor() Color
+	// SetAxisStrokeColor overrides the color used to draw axis lines.
 	SetAxisStrokeColor(Color)
+	// GetAxisSplitLineColor returns the color used to draw axis split lines.
 	GetAxisSplitLineColor() Color
+	// SetAxisSplitLineColor overrides the color used to draw axis split lines.
 	SetAxisSplitLineColor(Color)
+	// GetSeriesColor returns the color assigned to the series at the given
+	// index, wrapping around when more series than colors are defined.
 	GetSeriesColor(int) Color
+	// SetSeriesColor replaces the series color list.
 	SetSeriesColor([]Color)
+	// GetBackgroundColor returns the background color of the chart canvas.
 	GetBackgroundColor() Color
+	// SetBackgroundColor overrides the background color of the chart canvas.
 	SetBackgroundColor(Color)
+	// GetTextColor returns the color used to render text.
 	GetTextColor() Color
+	// SetTextColor overrides the color used to render text.
 	SetTextColor(Color)
+	// GetFontSize returns the font size in points.
 	GetFontSize() float64
+	// SetFontSize overrides the font size in points.
 	SetFontSize(float64)
+	// GetFont returns the TrueType font used to render text.
 	GetFont() *truetype.Font
+	// SetFont overrides the TrueType font used to render text.
 	SetFont(*truetype.Font)
 }
 
@@ -61,6 +88,8 @@ type themeColorPalette struct {
 	font               *truetype.Font
 }
 
+// ThemeOption describes the configuration of a theme that can be registered
+// through AddTheme.
 type ThemeOption struct {
 	IsDarkMode         bool
 	AxisStrokeColor    Color
@@ -244,6 +273,8 @@ func SetDefaultTheme(name string) {
 	defaultTheme = NewTheme(name)
 }
 
+// AddTheme registers a new theme under the given name. If a theme with the
+// same name already exists it is replaced.
 func AddTheme(name string, opt ThemeOption) {
 	palettes[name] = &themeColorPalette{
 		isDarkMode:         opt.IsDarkMode,
@@ -255,6 +286,10 @@ func AddTheme(name string, opt ThemeOption) {
 	}
 }
 
+// NewTheme returns a fresh ColorPalette for the theme registered under the
+// given name. Unknown names fall back to ThemeLight. The returned palette is
+// an independent copy, so callers may mutate it without affecting other
+// consumers.
 func NewTheme(name string) ColorPalette {
 	p, ok := palettes[name]
 	if !ok {

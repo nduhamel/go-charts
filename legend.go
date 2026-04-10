@@ -32,9 +32,14 @@ type legendPainter struct {
 	opt *LegendOption
 }
 
+// IconRect is the legend icon identifier for a filled rectangle.
 const IconRect = "rect"
+
+// IconLineDot is the legend icon identifier for a horizontal line with a
+// centered dot, mostly used with line charts.
 const IconLineDot = "lineDot"
 
+// LegendOption configures the rendering of a chart legend.
 type LegendOption struct {
 	// The theme
 	Theme ColorPalette
@@ -74,7 +79,7 @@ func NewLegendOption(labels []string, left ...string) LegendOption {
 	return opt
 }
 
-// IsEmpty checks legend is empty
+// IsEmpty reports whether the legend contains no visible entries.
 func (opt *LegendOption) IsEmpty() bool {
 	isEmpty := true
 	for _, v := range opt.Data {

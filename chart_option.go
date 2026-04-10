@@ -28,6 +28,9 @@ import (
 	"github.com/golang/freetype/truetype"
 )
 
+// ChartOption is the main configuration object accepted by Render. It
+// describes the output format, theme, axes, series and all other visual
+// aspects of a chart.
 type ChartOption struct {
 	theme ColorPalette
 	font  *truetype.Font

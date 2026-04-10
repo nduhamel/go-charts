@@ -34,6 +34,8 @@ type axisPainter struct {
 	opt *AxisOption
 }
 
+// NewAxisPainter returns a Renderer that draws a single axis (X or Y)
+// configured by opt on top of the given Painter.
 func NewAxisPainter(p *Painter, opt AxisOption) *axisPainter {
 	return &axisPainter{
 		p:   p,
@@ -41,6 +43,7 @@ func NewAxisPainter(p *Painter, opt AxisOption) *axisPainter {
 	}
 }
 
+// AxisOption groups the configuration shared by X and Y axes.
 type AxisOption struct {
 	// The theme of chart
 	Theme ColorPalette

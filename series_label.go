@@ -36,6 +36,8 @@ type labelRenderValue struct {
 	Radians float64
 }
 
+// LabelValue describes a single data label to be added to a
+// SeriesLabelPainter before rendering.
 type LabelValue struct {
 	Index int
 	Value float64
@@ -51,6 +53,8 @@ type LabelValue struct {
 	Offset   Box
 }
 
+// SeriesLabelPainter accumulates a list of labels and renders them in a
+// single pass so that all labels of a chart share the same style.
 type SeriesLabelPainter struct {
 	p           *Painter
 	seriesNames []string
@@ -60,6 +64,8 @@ type SeriesLabelPainter struct {
 	values      []labelRenderValue
 }
 
+// SeriesLabelPainterParams holds the arguments accepted by
+// NewSeriesLabelPainter.
 type SeriesLabelPainterParams struct {
 	P           *Painter
 	SeriesNames []string
@@ -68,6 +74,8 @@ type SeriesLabelPainterParams struct {
 	Font        *truetype.Font
 }
 
+// NewSeriesLabelPainter builds an empty SeriesLabelPainter configured with
+// the given parameters.
 func NewSeriesLabelPainter(params SeriesLabelPainterParams) *SeriesLabelPainter {
 	return &SeriesLabelPainter{
 		p:           params.P,
@@ -79,6 +87,8 @@ func NewSeriesLabelPainter(params SeriesLabelPainterParams) *SeriesLabelPainter 
 	}
 }
 
+// Add appends a label to the painter. The actual drawing happens when
+// Render is called.
 func (o *SeriesLabelPainter) Add(value LabelValue) {
 	label := o.label
 	distance := label.Distance
@@ -135,6 +145,8 @@ func (o *SeriesLabelPainter) Add(value LabelValue) {
 	o.values = append(o.values, renderValue)
 }
 
+// Render draws every label previously added through Add. It always returns
+// chart.BoxZero as labels are laid out by the underlying Painter.
 func (o *SeriesLabelPainter) Render() (Box, error) {
 	for _, item := range o.values {
 		o.p.OverrideTextStyle(item.Style)

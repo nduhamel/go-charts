@@ -35,6 +35,8 @@ type pieChart struct {
 	opt *PieChartOption
 }
 
+// PieChartOption configures a stand-alone pie chart rendered through
+// NewPieChart.
 type PieChartOption struct {
 	// The theme
 	Theme ColorPalette
@@ -86,6 +88,9 @@ type sector struct {
 	color       Color
 }
 
+// NewSector builds a pie chart sector positioned on a circle of the given
+// radius, laying out the label line that exits the sector and terminates
+// at labelLineLength pixels from the circle.
 func NewSector(cx int, cy int, radius float64, labelRadius float64, value float64, currentValue float64, totalValue float64, labelLineLength int, label string, series Series, color Color) sector {
 	s := sector{}
 	s.value = value

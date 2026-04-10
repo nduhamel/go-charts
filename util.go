@@ -33,11 +33,15 @@ import (
 	"github.com/wcharczuk/go-chart/v2/drawing"
 )
 
+// TrueFlag returns a pointer to a true boolean. It is handy when populating
+// option fields that use *bool to distinguish "unset" from "false".
 func TrueFlag() *bool {
 	t := true
 	return &t
 }
 
+// FalseFlag returns a pointer to a false boolean. It is handy when populating
+// option fields that use *bool to distinguish "unset" from "true".
 func FalseFlag() *bool {
 	f := false
 	return &f
@@ -156,15 +160,26 @@ func isFalse(flag *bool) bool {
 	return false
 }
 
+// NewFloatPoint returns a pointer to the given float64 value. It is handy
+// when populating option fields that use *float64 to distinguish "unset"
+// from zero.
 func NewFloatPoint(f float64) *float64 {
 	v := f
 	return &v
 }
 
-const K_VALUE = float64(1000)
-const M_VALUE = K_VALUE * K_VALUE
-const G_VALUE = M_VALUE * K_VALUE
-const T_VALUE = G_VALUE * K_VALUE
+// SI-prefix factors used by the default value formatter when abbreviating
+// large numbers on axis tick labels.
+const (
+	// K_VALUE is the multiplier for the "k" (thousand) suffix.
+	K_VALUE = float64(1000)
+	// M_VALUE is the multiplier for the "M" (million) suffix.
+	M_VALUE = K_VALUE * K_VALUE
+	// G_VALUE is the multiplier for the "G" (billion) suffix.
+	G_VALUE = M_VALUE * K_VALUE
+	// T_VALUE is the multiplier for the "T" (trillion) suffix.
+	T_VALUE = G_VALUE * K_VALUE
+)
 
 func commafWithDigits(value float64) string {
 	decimals := 2

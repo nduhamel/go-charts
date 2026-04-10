@@ -27,6 +27,7 @@ type gridPainter struct {
 	opt *GridPainterOption
 }
 
+// GridPainterOption configures how NewGridPainter draws grid lines.
 type GridPainterOption struct {
 	// The stroke width
 	StrokeWidth float64

@@ -31,6 +31,8 @@ import (
 )
 
 var fonts = sync.Map{}
+// ErrFontNotExists is returned when looking up a font that has not been
+// installed through InstallFont.
 var ErrFontNotExists = errors.New("font is not exists")
 var defaultFontFamily = "defaultFontFamily"
 

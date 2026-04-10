@@ -24,6 +24,8 @@ package charts
 
 import "github.com/golang/freetype/truetype"
 
+// YAxisOption configures the rendering of a Y axis. Two Y axes can be used
+// at the same time by passing two YAxisOption values to ChartOption.
 type YAxisOption struct {
 	// The minimun value of axis.
 	Min *float64
@@ -69,6 +71,9 @@ func NewYAxisOptions(data []string, others ...[]string) []YAxisOption {
 	return opts
 }
 
+// ToAxisOption converts a YAxisOption into the generic AxisOption shared
+// with the X axis renderer. The Painter p is used to fall back on the
+// chart-wide theme when the option does not define its own.
 func (opt *YAxisOption) ToAxisOption(p *Painter) AxisOption {
 	position := PositionLeft
 	if opt.Position == PositionRight {

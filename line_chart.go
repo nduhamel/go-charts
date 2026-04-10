@@ -45,6 +45,8 @@ func NewLineChart(p *Painter, opt LineChartOption) *lineChart {
 	}
 }
 
+// LineChartOption configures a stand-alone line chart rendered through
+// NewLineChart.
 type LineChartOption struct {
 	// The theme
 	Theme ColorPalette

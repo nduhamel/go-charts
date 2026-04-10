@@ -46,6 +46,8 @@ func NewTableChart(p *Painter, opt TableChartOption) *tableChart {
 	}
 }
 
+// TableCell represents a single cell passed to the cell-style callbacks of
+// TableChartOption.
 type TableCell struct {
 	// Text the text of table cell
 	Text string
@@ -57,6 +59,8 @@ type TableCell struct {
 	Column int
 }
 
+// TableChartOption configures a table chart rendered through NewTableChart
+// or TableOptionRender.
 type TableChartOption struct {
 	// The output type
 	Type string
@@ -95,6 +99,9 @@ type TableChartOption struct {
 	CellStyle func(TableCell) *Style
 }
 
+// TableSetting groups the theme-dependent colors and padding applied to a
+// table chart. The package exposes pre-built settings for the built-in
+// themes through TableLightThemeSetting, TableDarkThemeSetting and so on.
 type TableSetting struct {
 	// The color of header
 	HeaderColor Color
@@ -108,6 +115,8 @@ type TableSetting struct {
 	Padding Box
 }
 
+// TableLightThemeSetting is the default TableSetting used by the light
+// theme.
 var TableLightThemeSetting = TableSetting{
 	HeaderColor: Color{
 		R: 240,
@@ -144,6 +153,7 @@ var TableLightThemeSetting = TableSetting{
 	},
 }
 
+// TableDarkThemeSetting is the default TableSetting used by the dark theme.
 var TableDarkThemeSetting = TableSetting{
 	HeaderColor: Color{
 		R: 38,

@@ -27,47 +27,80 @@ import (
 	"github.com/wcharczuk/go-chart/v2/drawing"
 )
 
+// Box is a rectangular region used to describe positions and sizes inside a
+// chart. It is re-exported from the underlying go-chart package.
 type Box = chart.Box
+
+// Style groups the drawing attributes (stroke, fill, font, ...) applied when
+// rendering a chart element. It is re-exported from the underlying go-chart
+// package.
 type Style = chart.Style
+
+// Color represents an RGBA color. It is re-exported from the go-chart drawing
+// package.
 type Color = drawing.Color
 
+// BoxZero is the zero value for a Box, useful to detect unset bounds.
 var BoxZero = chart.BoxZero
 
+// Point is a two-dimensional pixel coordinate used by the chart renderers.
 type Point struct {
 	X int
 	Y int
 }
 
+// Chart type identifiers accepted by ChartOption and Series.
 const (
-	ChartTypeLine   = "line"
-	ChartTypeBar    = "bar"
-	ChartTypePie    = "pie"
-	ChartTypeRadar  = "radar"
+	// ChartTypeLine identifies a line chart.
+	ChartTypeLine = "line"
+	// ChartTypeBar identifies a vertical bar chart.
+	ChartTypeBar = "bar"
+	// ChartTypePie identifies a pie chart.
+	ChartTypePie = "pie"
+	// ChartTypeRadar identifies a radar chart.
+	ChartTypeRadar = "radar"
+	// ChartTypeFunnel identifies a funnel chart.
 	ChartTypeFunnel = "funnel"
-	// horizontal bar
+	// ChartTypeHorizontalBar identifies a horizontal bar chart.
 	ChartTypeHorizontalBar = "horizontalBar"
 )
 
+// Output formats supported by Render.
 const (
+	// ChartOutputSVG selects the SVG output format.
 	ChartOutputSVG = "svg"
+	// ChartOutputPNG selects the PNG output format.
 	ChartOutputPNG = "png"
 )
 
+// Position identifiers used to place titles, legends and labels.
 const (
-	PositionLeft   = "left"
-	PositionRight  = "right"
+	// PositionLeft anchors the element to the left side.
+	PositionLeft = "left"
+	// PositionRight anchors the element to the right side.
+	PositionRight = "right"
+	// PositionCenter centers the element horizontally or vertically.
 	PositionCenter = "center"
-	PositionTop    = "top"
+	// PositionTop anchors the element to the top.
+	PositionTop = "top"
+	// PositionBottom anchors the element to the bottom.
 	PositionBottom = "bottom"
 )
 
+// Horizontal text alignment identifiers.
 const (
-	AlignLeft   = "left"
-	AlignRight  = "right"
+	// AlignLeft aligns text to the left edge.
+	AlignLeft = "left"
+	// AlignRight aligns text to the right edge.
+	AlignRight = "right"
+	// AlignCenter centers text horizontally.
 	AlignCenter = "center"
 )
 
+// Orientation identifiers used by legends and similar components.
 const (
+	// OrientHorizontal lays components out horizontally.
 	OrientHorizontal = "horizontal"
-	OrientVertical   = "vertical"
+	// OrientVertical lays components out vertically.
+	OrientVertical = "vertical"
 )

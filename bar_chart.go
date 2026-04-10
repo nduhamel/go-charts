@@ -45,6 +45,8 @@ func NewBarChart(p *Painter, opt BarChartOption) *barChart {
 	}
 }
 
+// BarChartOption configures a stand-alone bar chart rendered through
+// NewBarChart.
 type BarChartOption struct {
 	// The theme
 	Theme ColorPalette

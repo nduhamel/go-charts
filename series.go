@@ -19,6 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+
 package charts
 
 import (
@@ -29,6 +30,8 @@ import (
 	"github.com/wcharczuk/go-chart/v2"
 )
 
+// SeriesData represents a single data point of a Series, including its
+// numeric value and an optional per-point style override.
 type SeriesData struct {
 	// The value of series data
 	Value float64
@@ -67,6 +70,7 @@ func NewSeriesDataFromValues(values []float64) []SeriesData {
 	return data
 }
 
+// SeriesLabel configures how data labels are rendered next to a series.
 type SeriesLabel struct {
 	// Data label formatter, which supports string template.
 	// {b}: the name of a data item.
@@ -87,27 +91,41 @@ type SeriesLabel struct {
 	FontSize float64
 }
 
+// Mark data type identifiers understood by SeriesMarkData.
 const (
-	SeriesMarkDataTypeMax     = "max"
-	SeriesMarkDataTypeMin     = "min"
+	// SeriesMarkDataTypeMax marks the maximum value of the series.
+	SeriesMarkDataTypeMax = "max"
+	// SeriesMarkDataTypeMin marks the minimum value of the series.
+	SeriesMarkDataTypeMin = "min"
+	// SeriesMarkDataTypeAverage marks the arithmetic mean of the series. It
+	// is only supported by mark lines.
 	SeriesMarkDataTypeAverage = "average"
 )
 
+// SeriesMarkData describes a single mark point or mark line entry.
 type SeriesMarkData struct {
 	// The mark data type, it can be "max", "min", "average".
 	// The "average" is only for mark line
 	Type string
 }
+
+// SeriesMarkPoint groups the configuration used to render mark points on a
+// series.
 type SeriesMarkPoint struct {
 	// The width of symbol, default value is 30
 	SymbolSize int
 	// The mark data of series mark point
 	Data []SeriesMarkData
 }
+
+// SeriesMarkLine groups the configuration used to render mark lines on a
+// series.
 type SeriesMarkLine struct {
 	// The mark data of series mark line
 	Data []SeriesMarkData
 }
+
+// Series describes a single data series to be drawn by the chart renderer.
 type Series struct {
 	index int
 	// The type of series, it can be "line", "bar" or "pie".
@@ -137,6 +155,7 @@ type Series struct {
 	// Min value of series
 	Max *float64
 }
+// SeriesList is an ordered collection of Series handed to ChartOption.
 type SeriesList []Series
 
 func (sl SeriesList) init() {
@@ -154,6 +173,7 @@ func (sl SeriesList) init() {
 	}
 }
 
+// Filter returns the subset of the list whose Type matches chartType.
 func (sl SeriesList) Filter(chartType string) SeriesList {
 	arr := make(SeriesList, 0)
 	for index, item := range sl {
@@ -164,7 +184,8 @@ func (sl SeriesList) Filter(chartType string) SeriesList {
 	return arr
 }
 
-// GetMaxMin get max and min value of series list
+// GetMaxMin returns the maximum and minimum values found across every series
+// bound to the given Y axis. Null values (see SetNullValue) are skipped.
 func (sl SeriesList) GetMaxMin(axisIndex int) (float64, float64) {
 	min := math.MaxFloat64
 	max := -math.MaxFloat64
@@ -188,12 +209,17 @@ func (sl SeriesList) GetMaxMin(axisIndex int) (float64, float64) {
 	return max, min
 }
 
+// PieSeriesOption configures NewPieSeriesList when building a pie chart
+// SeriesList from a flat slice of values.
 type PieSeriesOption struct {
 	Radius string
 	Label  SeriesLabel
 	Names  []string
 }
 
+// NewPieSeriesList builds a SeriesList for a pie chart from the given values.
+// Each value becomes a single-point series. When provided, opts[0] supplies
+// the pie radius, label configuration and series names.
 func NewPieSeriesList(values []float64, opts ...PieSeriesOption) SeriesList {
 	result := make([]Series, len(values))
 	var opt PieSeriesOption
@@ -234,7 +260,8 @@ type seriesSummary struct {
 	AverageValue float64
 }
 
-// Summary get summary of series
+// Summary returns a statistical summary (min, max and average) of the data
+// contained in the series.
 func (s *Series) Summary() seriesSummary {
 	minIndex := -1
 	maxIndex := -1
@@ -261,7 +288,7 @@ func (s *Series) Summary() seriesSummary {
 	}
 }
 
-// Names returns the names of series list
+// Names returns the Name of each series in the list, preserving order.
 func (sl SeriesList) Names() []string {
 	names := make([]string, len(sl))
 	for index, s := range sl {

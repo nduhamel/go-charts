@@ -32,6 +32,8 @@ type horizontalBarChart struct {
 	opt *HorizontalBarChartOption
 }
 
+// HorizontalBarChartOption configures a stand-alone horizontal bar chart
+// rendered through NewHorizontalBarChart.
 type HorizontalBarChartOption struct {
 	// The theme
 	Theme ColorPalette

@@ -53,6 +53,8 @@ func NewFunnelChart(p *Painter, opt FunnelChartOption) *funnelChart {
 	}
 }
 
+// FunnelChartOption configures a stand-alone funnel chart rendered through
+// NewFunnelChart.
 type FunnelChartOption struct {
 	// The theme
 	Theme ColorPalette
