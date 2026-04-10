@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func writeFile(buf []byte) error {

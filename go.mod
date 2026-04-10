@@ -1,4 +1,4 @@
-module github.com/vicanso/go-charts/v2
+module github.com/nduhamel/go-charts/v2
 
 go 1.24
 

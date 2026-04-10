@@ -1,7 +1,7 @@
 # go-charts
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/vicanso/go-charts/blob/master/LICENSE)
-[![Build Status](https://github.com/vicanso/go-charts/workflows/Test/badge.svg)](https://github.com/vicanso/go-charts/actions)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nduhamel/go-charts/blob/master/LICENSE)
+[![Build Status](https://github.com/nduhamel/go-charts/workflows/Test/badge.svg)](https://github.com/nduhamel/go-charts/actions)
 
 `go-charts` base on [go-chart](https://github.com/wcharczuk/go-chart)，it is simpler way for generating charts, which supports `svg` and `png` format and themes: `light`, `dark`, `grafana` and `ant`. The default format is `png` and the default theme is `light`.
 
@@ -31,7 +31,7 @@ More examples can be found in the [./examples/](./examples/) directory.
 package main
 
 import (
-	charts "github.com/vicanso/go-charts/v2"
+	charts "github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -97,7 +97,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -172,7 +172,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -229,7 +229,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -284,7 +284,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -342,7 +342,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -382,7 +382,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
@@ -447,7 +447,7 @@ func main() {
 package main
 
 import (
-	"github.com/vicanso/go-charts/v2"
+	"github.com/nduhamel/go-charts/v2"
 )
 
 func main() {
