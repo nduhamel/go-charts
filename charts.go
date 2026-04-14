@@ -443,10 +443,10 @@ func Render(opt ChartOption, opts ...OptionFunc) (*Painter, error) {
 	if len(radarSeriesList) != 0 {
 		handler.Add(func() error {
 			_, err := NewRadarChart(p, RadarChartOption{
-				Theme: opt.theme,
-				Font:  opt.font,
-				// 相应值
-				RadarIndicators: opt.RadarIndicators,
+				Theme:             opt.theme,
+				Font:              opt.font,
+				RadarIndicators:   opt.RadarIndicators,
+				IndicatorFontSize: opt.RadarIndicatorFontSize,
 			}).render(renderResult, radarSeriesList)
 			return err
 		})

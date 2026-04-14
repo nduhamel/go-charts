@@ -62,6 +62,8 @@ type ChartOption struct {
 	SeriesList SeriesList
 	// The radar indicator list
 	RadarIndicators []RadarIndicator
+	// RadarIndicatorFontSize overrides the font size for radar indicator labels.
+	RadarIndicatorFontSize float64
 	// The background color of chart
 	BackgroundColor Color
 	// The flag for show symbol of line, set this to *false will hide symbol
@@ -228,6 +230,14 @@ func ChildOptionFunc(child ...ChartOption) OptionFunc {
 func RadarIndicatorOptionFunc(names []string, values []float64) OptionFunc {
 	return func(opt *ChartOption) {
 		opt.RadarIndicators = NewRadarIndicators(names, values)
+	}
+}
+
+// RadarIndicatorFontSizeOptionFunc overrides the font size used for the
+// indicator labels drawn around the radar chart.
+func RadarIndicatorFontSizeOptionFunc(size float64) OptionFunc {
+	return func(opt *ChartOption) {
+		opt.RadarIndicatorFontSize = size
 	}
 }
 

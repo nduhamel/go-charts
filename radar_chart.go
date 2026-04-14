@@ -64,6 +64,9 @@ type RadarChartOption struct {
 	Legend LegendOption
 	// The radar indicator list
 	RadarIndicators []RadarIndicator
+	// IndicatorFontSize overrides the font size used for indicator labels
+	// around the radar chart. When zero the default labelFontSize is used.
+	IndicatorFontSize float64
 	// background is filled
 	backgroundIsFilled bool
 }
@@ -151,9 +154,13 @@ func (r *radarChart) render(result *defaultRenderResult, seriesList SeriesList) 
 		seriesPainter.LineTo(p.X, p.Y)
 		seriesPainter.Stroke()
 	}
+	indicatorFontSize := opt.IndicatorFontSize
+	if indicatorFontSize == 0 {
+		indicatorFontSize = labelFontSize
+	}
 	seriesPainter.OverrideTextStyle(Style{
 		FontColor: theme.GetTextColor(),
-		FontSize:  labelFontSize,
+		FontSize:  indicatorFontSize,
 		Font:      opt.Font,
 	})
 	offset := 5
